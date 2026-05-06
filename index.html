@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>日本語 Hub — Belajar Bahasa Jepang</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1410;
+  --paper: #f5f0e8;
+  --paper2: #ede7d9;
+  --vermillion: #c0392b;
+  --gold: #b5860d;
+  --mist: #e0d9cc;
+  --sage: #2e7d52;
+  --shadow: rgba(26,20,16,0.13);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', 'Noto Sans JP', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+/* ── HERO ── */
+.hero {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 80px 24px 72px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '日本語';
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(8rem, 25vw, 18rem);
+  font-weight: 900;
+  color: rgba(181,134,13,.07);
+  white-space: nowrap;
+  pointer-events: none;
+  line-height: 1;
+}
+.hero-label {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(181,134,13,.4);
+  border-radius: 20px;
+  padding: 4px 16px;
+  margin-bottom: 24px;
+}
+.hero h1 {
+  font-family: 'DM Serif Display', 'Noto Serif JP', serif;
+  font-size: clamp(2.4rem, 7vw, 4.5rem);
+  line-height: 1.1;
+  margin-bottom: 20px;
+  position: relative;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
+.hero p {
+  font-size: clamp(0.9rem, 2vw, 1.05rem);
+  color: rgba(245,240,232,.65);
+  max-width: 520px;
+  margin: 0 auto 36px;
+  line-height: 1.75;
+}
+.hero-badges {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-size: 0.78rem;
+  color: rgba(245,240,232,.75);
+}
+
+/* ── DIVIDER ── */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 52px 40px 36px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+.divider h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.5rem;
+  white-space: nowrap;
+}
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background: var(--mist);
+}
+
+/* ── CARDS GRID ── */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+.app-card {
+  background: white;
+  border: 2px solid var(--mist);
+  border-radius: 20px;
+  padding: 28px 26px 24px;
+  text-decoration: none;
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+  overflow: hidden;
+  transition: all .25s cubic-bezier(.4,0,.2,1);
+  cursor: pointer;
+}
+.app-card::before {
+  content: attr(data-bg);
+  position: absolute;
+  right: -8px; bottom: -16px;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 6rem;
+  font-weight: 900;
+  opacity: .06;
+  line-height: 1;
+  pointer-events: none;
+  transition: opacity .25s;
+}
+.app-card:hover {
+  border-color: var(--vermillion);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px var(--shadow);
+}
+.app-card:hover::before { opacity: .1; }
+
+.card-icon {
+  font-size: 2.2rem;
+  margin-bottom: 16px;
+  display: block;
+}
+.card-tag {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.card-title {
+  font-family: 'DM Serif Display', 'Noto Serif JP', serif;
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+.card-desc {
+  font-size: 0.83rem;
+  color: #888;
+  line-height: 1.65;
+  flex: 1;
+  margin-bottom: 20px;
+}
+
+.card-features {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 22px;
+}
+.card-feature {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  color: #666;
+}
+.card-feature::before {
+  content: '✓';
+  color: var(--sage);
+  font-weight: 700;
+  font-size: 0.72rem;
+  flex-shrink: 0;
+}
+
+.card-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: background .15s;
+  text-decoration: none;
+}
+.app-card:hover .card-cta { background: var(--vermillion); }
+.card-cta-arrow {
+  font-size: 1rem;
+  transition: transform .2s;
+}
+.app-card:hover .card-cta-arrow { transform: translateX(4px); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  color: rgba(245,240,232,.45);
+  text-align: center;
+  padding: 28px 24px;
+  font-size: 0.78rem;
+  line-height: 1.8;
+}
+footer strong { color: var(--gold); }
+
+/* ── RESPONSIVE ── */
+@media(max-width:600px) {
+  .hero { padding: 56px 20px 52px; }
+  .divider { padding: 36px 20px 24px; }
+  .cards-grid { padding: 0 16px 56px; gap: 14px; }
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-label">🇯🇵 Belajar Bahasa Jepang</div>
+  <h1>日本語 <em>Hub</em></h1>
+  <p>Kumpulan tools belajar bahasa Jepang gratis. Dari kana, kosakata, hingga tata bahasa — semua progress tersimpan ke Google Drive.</p>
+  <div class="hero-badges">
+    <span class="badge">☁️ Sync Google Drive</span>
+    <span class="badge">🆓 Gratis selamanya</span>
+    <span class="badge">📱 Bisa di semua device</span>
+  </div>
+</div>
+
+<div class="divider">
+  <h2>Pilih Tools</h2>
+  <div class="divider-line"></div>
+</div>
+
+<div class="cards-grid">
+
+  <!-- KANA DOJO -->
+  <a class="app-card" href="https://au7an.github.io/Kana_Dojo/" data-bg="かな" target="_blank">
+    <span class="card-icon">🥋</span>
+    <div class="card-tag">Level 1 — Mulai dari sini</div>
+    <div class="card-title">かな道場<br>Kana Dojo</div>
+    <div class="card-desc">Kuasai hiragana dan katakana lewat 5 level progresif. Dari baca per huruf sampai kalimat nyata campuran hiragana+katakana.</div>
+    <div class="card-features">
+      <div class="card-feature">5 level progresif dengan lock system</div>
+      <div class="card-feature">Timer per soal untuk latih kecepatan</div>
+      <div class="card-feature">Soal selalu diacak, tidak hafal urutan</div>
+      <div class="card-feature">Streak harian & tracking huruf lemah</div>
+    </div>
+    <div class="card-cta">
+      Buka Kana Dojo
+      <span class="card-cta-arrow">→</span>
+    </div>
+  </a>
+
+  <!-- KAISHI FLASHCARD -->
+  <a class="app-card" href="https://au7an.github.io/kaishi-flashcard/" data-bg="語" target="_blank">
+    <span class="card-icon">🃏</span>
+    <div class="card-tag">Level 2 — Kosakata</div>
+    <div class="card-title">開始 Kaishi<br>Flashcard</div>
+    <div class="card-desc">1.500 kosakata JLPT N5+N4 dengan terjemahan Indonesia. Sistem SRS sederhana — tandai yang susah, ulangi sampai hafal.</div>
+    <div class="card-features">
+      <div class="card-feature">1.500 kartu dari deck Kaishi resmi</div>
+      <div class="card-feature">Contoh kalimat untuk setiap kata</div>
+      <div class="card-feature">Mode ulangi kartu yang salah</div>
+      <div class="card-feature">Rating Lagi / Susah / Paham / Mudah</div>
+    </div>
+    <div class="card-cta">
+      Buka Flashcard
+      <span class="card-cta-arrow">→</span>
+    </div>
+  </a>
+
+  <!-- NIHONGO SENSEI -->
+  <a class="app-card" href="https://au7an.github.io/nihongo-sensei/" data-bg="先" target="_blank">
+    <span class="card-icon">👨‍🏫</span>
+    <div class="card-tag">Level 3 — Tata Bahasa</div>
+    <div class="card-title">日本語先生<br>Nihongo Sensei</div>
+    <div class="card-desc">Kursus terstruktur dari katakana, kosakata harian, kanji N5, tata bahasa, hingga kosakata kerja. Plus tanya langsung ke AI Sensei.</div>
+    <div class="card-features">
+      <div class="card-feature">6 unit terstruktur dengan kuis</div>
+      <div class="card-feature">Lock system — selesaikan dulu unit sebelumnya</div>
+      <div class="card-feature">AI Sensei siap jawab pertanyaanmu</div>
+      <div class="card-feature">Target JFT-Basic & JLPT N5</div>
+    </div>
+    <div class="card-cta">
+      Buka Nihongo Sensei
+      <span class="card-cta-arrow">→</span>
+    </div>
+  </a>
+
+</div>
+
+<footer>
+  Dibuat dengan ❤️ untuk pelajar bahasa Jepang Indonesia<br>
+  <strong>日本語 Hub</strong> · Semua tools gratis & open source · Progress sync via Google Drive
+</footer>
+
+</body>
+</html>
